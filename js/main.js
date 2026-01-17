@@ -10,17 +10,30 @@ const leafRandomPosition = () => {
   let maxWidth = document.documentElement.clientWidth;
 
   for (const leaf of leaves) {
-    leaf.style.left = `${getRandom(Math.floor(maxWidth * 0.1), maxWidth)}px`;
+    leaf.style.left = `${getRandom(0, maxWidth)}px`;
   }
 };
 
+const vh = window.innerHeight;
+
 tl.to('.leaf', {
-  y: '+=110vh',
-  x: `-=${getRandom(30, 40)}vw`,
-  duration: 4,
-  ease: 'power1.in',
+  duration: 6,
+  ease: 'none',
   stagger: 1.5,
-  onStart: () => {
-    leafRandomPosition();
+  rotation: () => getRandom(-180, 180),
+  transformOrigin: 'center center',
+  motionPath: {
+    path: [
+      { x: 0, y: 0 },
+      { x: -20, y: vh * 0.15 },
+      { x: 25, y: vh * 0.3 },
+      { x: -30, y: vh * 0.5 },
+      { x: 35, y: vh * 0.7 },
+      { x: -20, y: vh * 0.9 },
+      { x: 15, y: vh * 1.15 },
+    ],
+    curviness: 1.5,
+    autoRotate: false,
   },
+  onStart: leafRandomPosition,
 });
