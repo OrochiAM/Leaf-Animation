@@ -10,7 +10,7 @@ const leafRandomPosition = () => {
   let maxWidth = document.documentElement.clientWidth;
 
   for (const leaf of leaves) {
-    leaf.style.left = `${getRandom(0, maxWidth)}px`;
+    leaf.style.left = `${getRandom(30, maxWidth - 35)}px`;
   }
 };
 
@@ -19,7 +19,7 @@ const vh = window.innerHeight;
 tl.to('.leaf', {
   duration: 6,
   ease: 'none',
-  stagger: 1.5,
+  stagger: 1,
   rotation: () => getRandom(-180, 180),
   transformOrigin: 'center center',
   motionPath: {
