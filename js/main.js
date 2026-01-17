@@ -14,7 +14,17 @@ const leafRandomPosition = () => {
   }
 };
 
-const vh = window.innerHeight;
+let vh = window.innerHeight;
+
+window.addEventListener('resize', () => {
+  vh = window.innerHeight;
+  tl.restart();
+});
+
+window.addEventListener('fullscreenchange', () => {
+  vh = window.innerHeight;
+  tl.restart();
+});
 
 tl.to('.leaf', {
   duration: 6,
